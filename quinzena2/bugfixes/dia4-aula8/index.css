@@ -139,6 +139,14 @@ td button:active {
     height: 100px;
 }
 
+.container-do-search img:hover {
+    opacity: 0.5;
+}
+
+.container-do-search img:active {
+    opacity: 1.0;
+}
+
 .back-button {
     text-align: center;
 }
