@@ -104,6 +104,7 @@ div:last-child {
 table {
     width: 60%;
     text-align: center;
+    margin: 0 auto;
 }
 
 td img {
@@ -132,6 +133,9 @@ td button:active {
     height: 100px;
 }
 
+.back-button {
+    text-align: center;
+}
 
 #back-button {
     background-color: white;
