@@ -3,23 +3,42 @@ import './SecaoComentario.css'
 
 export class SecaoComentario extends Component {
 	state = {
-		value: ""
+		comentarios: [],
+		valorInputComentario: ""
 	}
 
 	onChangeComentario = (event) => {
-		this.setState({value: event.target.value})
-		console.log(this.state.value)
+		this.setState({valorInputComentario: event.target.value})
+	}
+
+	adicionaComentario = () => {
+		const atualizaComentarios = [this.state.valorInputComentario, ...this.state.comentarios]
+		this.setState({
+			comentarios: atualizaComentarios
+		})
+		{this.props.aoEnviar()}
 	}
 
 	render() {
-		return <div className={'comment-container'}>
-			<input
-				className={'input-comentario'}
-				placeholder={'Comentário'}
-				value={this.state.value}
-				onChange={this.onChangeComentario}
-			/>
-			<button onClick={this.props.aoEnviar}>Enviar</button>
-		</div>
+		const listaComentarios = this.state.comentarios.map((comentario) => {
+			return(
+				<p>{comentario}</p>
+			)
+		})
+
+		return (
+		<div>
+			<div className={'comment-container'}>
+				<input
+					className={'input-comentario'}
+					placeholder={'Comentário'}
+					value={this.state.valorInputComentario}
+					onChange={this.onChangeComentario}
+				/>
+				<button onClick={this.adicionaComentario}>Enviar</button>
+			</div>
+			<div className={'comment'}>{listaComentarios}</div>
+		</div>	
+		)
 	}
 }
