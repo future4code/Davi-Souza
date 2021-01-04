@@ -1,15 +1,16 @@
 import React from 'react'
-import BackButton from '../../Components/Buttons/BackButton'
-import GoToPageButton from "../../Components/Buttons/GoToPageButton";
+import BackButton from '../../Components/BackButton'
+import GotoPageBtn from "../../Components/GotoPageBtn";
+import { MainContainer } from '../../Components/MainContainer';
 
 function ErrorPage() {
     return (
-        <div>
+        <MainContainer>
             <h1>404</h1>
             <h2>Algo errado não está certo!</h2>
-            <GoToPageButton path="/" text="Home"/>
+            <GotoPageBtn variant='contained' color='primary' path="/" text="Ir para Home"/>
             <BackButton/>
-        </div>
+        </MainContainer>
     )
 }
 

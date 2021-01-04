@@ -30,7 +30,7 @@ function Router() {
                     <NewTripPage/>
                 </Route>
 
-                <Route exact path="/trip/details">
+                <Route exact path="/trip/details/:tripId">
                     <TripDetailsPage/>
                 </Route>
 

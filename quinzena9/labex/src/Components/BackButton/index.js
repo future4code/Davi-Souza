@@ -1,5 +1,7 @@
+import { Button } from '@material-ui/core'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+
 
 export default function BackButton () {
     const history = useHistory()
@@ -9,7 +11,14 @@ export default function BackButton () {
     }
     return (
         <div>
-            <button onClick={goBack}>Voltar</button>
+            <Button 
+                variant='outlined' 
+                color='primary' 
+                onClick={goBack}
+                size='small'
+            >
+                Voltar
+            </Button>
         </div>
     )
 }

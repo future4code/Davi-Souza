@@ -1,15 +1,38 @@
+import { List, ListItem, ListItemText } from '@material-ui/core';
 import React from 'react'
-import BackButton from '../../Components/Buttons/BackButton'
-import GoToPageButton from "../../Components/Buttons/GoToPageButton";
+import { Link } from 'react-router-dom';
+import BackButton from '../../Components/BackButton'
+import GotoPageBtn from "../../Components/GotoPageBtn";
+import { MainContainer } from '../../Components/MainContainer';
+import useProtectedPage from '../../hooks/useProtectedPage';
+import { useTripsList } from '../../hooks/useTripList';
 
 function AdminPage() {
+    const trips = useTripsList()
+    useProtectedPage()
+
     return (
-        <div>
+        <MainContainer>
             <h1>PAINEL ADMINISTRADOR</h1>
-            <GoToPageButton path="/trip/new" text="Cadastrar Viagem"/>
-            <GoToPageButton path="/trip/details" text="Viagens Cadastradas"/>
+            <GotoPageBtn 
+                variant='contained' 
+                color='primary' 
+                path="/trip/new" 
+                text="Cadastrar Viagem"
+            />
+            <List component='nav'>
+                {trips.map((trip) => {
+                    return (
+                        <Link to={`/trip/details/${trip.id}`}>
+                            <ListItem button>
+                                <ListItemText primary={trip.name}/>
+                            </ListItem>
+                        </Link>
+                    )
+                })}
+            </List>
             <BackButton/>
-        </div>
+        </MainContainer>
     )
 }
 
